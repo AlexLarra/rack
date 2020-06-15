@@ -212,7 +212,7 @@ module Rack
       # The syntax for cookie headers only supports semicolons
       # User Agent -> Server ==
       # Cookie: SID=31d4d96e407aad42; lang=en-US
-      cookies = parse_query(header, ';') { |s| unescape(s) rescue s }
+      cookies = parse_query(header, ';,') { |s| unescape(s) rescue s }
       cookies.each_with_object({}) { |(k, v), hash| hash[k] = Array === v ? v.first : v }
     end
 
